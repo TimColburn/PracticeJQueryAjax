@@ -51,6 +51,9 @@
                     $('#results').empty();
                     $('#results').append(response);
                 },
+                error: function () {
+                    alert("Error");
+                },
                 complete: function (data) {
                     $("#loader").hide();
                 }
