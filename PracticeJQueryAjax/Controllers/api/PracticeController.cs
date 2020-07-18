@@ -21,6 +21,7 @@ namespace PracticeJQueryAjax.Controllers
             return "test";
         }
 
+
         [HttpPost]
         public string Post([FromBody] string value)
         {
