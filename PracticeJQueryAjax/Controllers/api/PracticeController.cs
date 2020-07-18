@@ -25,7 +25,7 @@ namespace PracticeJQueryAjax.Controllers
         public string Get()
         {
             Thread.Sleep(2000);
-            return "test";
+            return "This text came from the server's GET action method";
         }
 
 
@@ -33,7 +33,7 @@ namespace PracticeJQueryAjax.Controllers
         public string Post([FromBody] TestClass testClass)
         {
             Thread.Sleep(2000);
-            return "This test came from the server";
+            return "This text came from the server's POST action method";
         }
 
 
