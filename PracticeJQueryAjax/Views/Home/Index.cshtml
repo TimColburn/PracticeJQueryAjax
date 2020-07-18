@@ -5,21 +5,52 @@
     <div id="results" style="width: 300px; height: 100px; background: #333; color: white;">
         Hello World
     </div>
+
+    <div id="loader" style="position: absolute; left: 50px; top: 160px; font-size: 30px; color: #ddd;">
+        LOADING...
+    </div>
 </div>
 
 <script>
 
     $(document).ready(function () {
 
+        $("#loader").hide();
+
         $('#btnAjaxGet').click(function () {
-            $.get("https://localhost:44396/api/Practice", function (data, status) {
-                $('#results').text(data);
+            $.ajax({
+                url: 'https://localhost:44396/api/Practice',
+                type: 'get',
+                beforeSend: function () {
+                    $("#loader").show();
+                },
+                success: function (response) {
+                    $('#results').empty();
+                    $('#results').append(response);
+                },
+                complete: function (data) {
+                    $("#loader").hide();
+                }
             });
         });
 
+
+        // try using the ajax function
         $('#btnAjaxPost').click(function () {
-            $.post("https://localhost:44396/api/Practice", { Test:"testthis" }, function (data, status) {
-                $('#results').text(data);
+            $.ajax({
+                url: 'https://localhost:44396/api/Practice',
+                type: 'post',
+                data: { Test: "testthis" },
+                beforeSend: function () {
+                    $("#loader").show();
+                },
+                success: function (response) {
+                    $('#results').empty();
+                    $('#results').append(response);
+                },
+                complete: function (data) {
+                    $("#loader").hide();
+                }
             });
         });
 

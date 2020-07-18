@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace PracticeJQueryAjax.Controllers
@@ -23,6 +24,7 @@ namespace PracticeJQueryAjax.Controllers
 
         public string Get()
         {
+            Thread.Sleep(2000);
             return "test";
         }
 
@@ -30,6 +32,7 @@ namespace PracticeJQueryAjax.Controllers
         [HttpPost]
         public string Post([FromBody] TestClass testClass)
         {
+            Thread.Sleep(2000);
             return "This test came from the server";
         }
 
