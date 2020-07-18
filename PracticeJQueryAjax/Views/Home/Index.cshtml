@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <button id="btnAjaxGet">AJAX Get</button>
+    <button id="btnAjaxPost">AJAX Post</button>
+    <hr />
+    <div id="results" style="width: 300px; height: 100px; background: #333; color: white;">
+        Hello World
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#btnAjaxGet').click(function () {
+            $.get("api/Practice", function (data, status) {
+                $('#results').text(data);
+            });
+        });
+
+        $('#btnAjaxPost').click(function () {
+            $.post("api/Practice", "testthis",  function (data, status) {
+                $('#results').text(data);
+            });
+        });
+
+    });
+
+</script>
