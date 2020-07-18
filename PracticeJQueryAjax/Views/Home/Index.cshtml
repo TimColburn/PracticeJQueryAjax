@@ -38,27 +38,63 @@
         });
 
 
-        // try using the ajax function
+        // This is the async/await version ajax 
+        // function (for the POST) using a Promise!
+        // Now apply the below code to the GET above.
         $('#btnAjaxPost').click(function () {
-            $.ajax({
-                url: 'https://localhost:44396/api/Practice',
-                type: 'post',
-                data: { Test: "testthis" },
-                beforeSend: function () {
-                    $("#loader").show();
-                },
-                success: function (response) {
-                    $('#results').empty();
-                    $('#results').append(response);
-                },
-                error: function () {
-                    alert("Error");
-                },
-                complete: function (data) {
-                    $("#loader").hide();
-                }
-            });
+            doAjax().then((data) => doStuff(data));
         });
+
+        // this is the callback if successful
+        function doStuff(data) {
+            alert("in doStuff(" + data + ")");
+            $('#results').empty();
+            $('#results').append(data);
+        }
+
+        // this wraps the async ajax call in a try/catch
+        async function doAjax(args) {
+            let result;
+            try {
+                result = await $.ajax({
+                    url: 'https://localhost:44396/api/Practice',
+                    type: 'post',
+                    data: { Test: "testthis" } ,
+                    beforeSend: function () {
+                        $("#loader").show();
+                    },
+                    complete: function (data) {
+                        $("#loader").hide();
+                    }
+                });
+                return result;
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+
+        // this is the (old) synchronous call to ajax function
+        //$('#btnAjaxPost').click(function () {
+        //    $.ajax({
+        //        url: 'https://localhost:44396/api/Practice',
+        //        type: 'post',
+        //        data: { Test: "testthis" },
+        //        beforeSend: function () {
+        //            $("#loader").show();
+        //        },
+        //        success: function (response) {
+        //            $('#results').empty();
+        //            $('#results').append(response);
+        //        },
+        //        error: function () {
+        //            alert("Error");
+        //        },
+        //        complete: function (data) {
+        //            $("#loader").hide();
+        //        }
+        //    });
+        //});
 
     });
 
