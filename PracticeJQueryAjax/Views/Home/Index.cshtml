@@ -19,7 +19,7 @@
 
         $('#btnAjaxGet').click(function () {
             $.ajax({
-                url: 'https://localhost:44396/api/Practice',
+                url: 'https://localhost:44396/api/Practicex',
                 type: 'get',
                 beforeSend: function () {
                     $("#loader").show();
@@ -27,6 +27,9 @@
                 success: function (response) {
                     $('#results').empty();
                     $('#results').append(response);
+                },
+                error: function () {
+                    alert("Error");
                 },
                 complete: function (data) {
                     $("#loader").hide();
