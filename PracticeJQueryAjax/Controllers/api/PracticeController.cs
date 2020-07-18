@@ -7,6 +7,11 @@ using System.Web.Http;
 
 namespace PracticeJQueryAjax.Controllers
 {
+    public class TestClass
+    {
+        public string Test { get; set; }
+    }
+
     public class PracticeController : ApiController
     {
         //// GET: api/Practice
@@ -23,9 +28,9 @@ namespace PracticeJQueryAjax.Controllers
 
 
         [HttpPost]
-        public string Post([FromBody] string value)
+        public string Post([FromBody] TestClass testClass)
         {
-            return "data from AJAX Post";
+            return "This test came from the server";
         }
 
 

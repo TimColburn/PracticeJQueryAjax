@@ -12,13 +12,13 @@
     $(document).ready(function () {
 
         $('#btnAjaxGet').click(function () {
-            $.get("api/Practice", function (data, status) {
+            $.get("https://localhost:44396/api/Practice", function (data, status) {
                 $('#results').text(data);
             });
         });
 
         $('#btnAjaxPost').click(function () {
-            $.post("api/Practice", "testthis",  function (data, status) {
+            $.post("https://localhost:44396/api/Practice", { Test:"testthis" }, function (data, status) {
                 $('#results').text(data);
             });
         });
