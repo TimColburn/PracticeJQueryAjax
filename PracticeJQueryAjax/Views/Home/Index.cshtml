@@ -1,6 +1,6 @@
 ﻿<div class="container">
-    <button id="btnAjaxGet">AJAX Get</button>
-    <button id="btnAjaxPost">AJAX Post</button>
+    <button id="btnAjaxGet" type="button">AJAX Get</button>
+    <button id="btnAjaxPost" type="button">AJAX Post</button>
     <hr />
     <div id="results" style="width: 300px; height: 100px; background: #333; color: white;">
         Hello World
@@ -38,7 +38,7 @@
         });
 
 
-        // This is the async/await version ajax 
+        // This is the async/await version ajax
         // function (for the POST) using a Promise!
         // Now apply the below code to the GET above.
         $('#btnAjaxPost').click(function () {
@@ -58,7 +58,7 @@
                 result = await $.ajax({
                     url: 'https://localhost:44396/api/Practice',
                     type: 'post',
-                    data: { Test: "testthis" } ,
+                    data: { Test: "test param" },
                     beforeSend: function () {
                         $("#loader").show();
                     },

@@ -33,7 +33,9 @@ namespace PracticeJQueryAjax.Controllers
         public string Post([FromBody] TestClass testClass)
         {
             Thread.Sleep(2000);
-            return "This text came from the server's POST action method";
+            return $@"This text came from the 
+                    server's POST action method. 
+                    The parameter value is '{testClass.Test}'";
         }
 
 
